@@ -1,0 +1,40 @@
+//protoc --go_out=. --go-grpc_out=. proto/greet.proto
+// for generating the go code
+
+
+syntax = "proto3"; // proto3 is the version of the proto file
+
+option go_package = "./proto"; // go_package is the package name for the generated go code
+
+package greet_service; // package name for the service
+
+service GreetService {
+    rpc SayHello(NoParam) returns (HelloResponse); // unary RPC
+
+    rpc SayHelloServerStreaming(NamesList) returns (stream HelloResponse); // server streaming RPC
+
+    rpc SayHelloClientStreaming(stream HelloRequest) returns (MessagesList); // client streaming RPC
+
+    rpc SayHelloBidirectionalStreaming(stream HelloRequest) returns ( stream HelloResponse); // bidirectional streaming RPC
+
+
+}
+
+message NoParam {} // empty request
+
+message HelloRequest {
+    string name = 1;
+}
+
+message HelloResponse { // response message
+    string message = 1;
+}
+
+message NamesList {
+    repeated string names = 1; // array of names
+}
+
+message MessagesList {
+    repeated string messages = 1; // array of messages
+}
+
