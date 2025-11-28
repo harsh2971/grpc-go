@@ -1,6 +1,6 @@
-# gRPC Go Tutorial Project
+# gRPC Go
 
-A comprehensive gRPC tutorial project demonstrating all four types of RPC communication patterns in Go.
+A comprehensive gRPC project demonstrating all four types of RPC communication patterns in Go.
 
 ## 📚 What is gRPC?
 
