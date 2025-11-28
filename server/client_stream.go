@@ -15,6 +15,7 @@ func (s *helloServer) SayHelloClientStreaming(stream pb.GreetService_SayHelloCli
 		// receive a stream of requests from the client
 		req,err := stream.Recv()
 		if err == io.EOF {
+			// send the final response to the client and close the stream
 			return stream.SendAndClose(&pb.MessagesList{Messages: messages})
 		}
 		if err != nil {

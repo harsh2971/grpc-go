@@ -37,6 +37,7 @@ func callSayHelloBidirectionalStreaming(client pb.GreetServiceClient, names *pb.
 		close(waitc)//close the channel to signal the main goroutine that the streaming is finished
 	}()
 
+	// send a stream of requests to the server
 	for _, name := range names.Names {
 		req:= &pb.HelloRequest{
 			Name: name,
